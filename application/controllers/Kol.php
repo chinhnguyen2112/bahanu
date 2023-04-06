@@ -35,6 +35,7 @@ class Kol extends CI_Controller
         $this->load->helper('pagination');
         $this->load->library('pagination311');
         $this->load->helper('images');
+        $this->load->helper('form');
         $this->load->library('upload');
         if (isset($_SESSION['user']) && $_SESSION['user']['id'] > 0) {
             $where_g = [

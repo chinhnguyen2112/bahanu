@@ -56,7 +56,7 @@ class Home extends CI_Controller
             $data['my_friend'] = [];
         }
         $data['list_user'] = $this->Account->query_sql($sql2);
-
+        $data['list_game'] = $this->Account->query_sql("SELECT * FROM category");
         $sql3 = "SELECT avatar,name,price,cate, accounts.id,text_intro FROM accounts INNER JOIN kol ON kol.id_user = accounts.id ";
         $data['list_kol'] = $this->Account->query_sql($sql3);
         $data['list_js'] = [
@@ -65,6 +65,7 @@ class Home extends CI_Controller
         $data['list_css'] = [
             'kol/community.css'
         ];
+        $data['meta_title'] = 'Bahanu: Web Apps Giao Lưu Cùng Ido Của Bạn';
         $data['content'] = '/main/main';
         $this->load->view('index', $data);
     }
@@ -194,6 +195,8 @@ class Home extends CI_Controller
                                 <img src="/' . $data_post['avatar'] . '" alt="chi tiết idol">
                                 <p class="num_count">' . number_format($data_post["price"], 0, '.', '.') . ' Zen/giờ</p>
                             </div>
+                            <div class="box_data_kol">
+
                             <p class="name">' . $data_post["name"] . '</p>
                             <p class="intro">' . $data_post["text_intro"] . '</p>
                             <div class="box_data_detail">
@@ -205,6 +208,7 @@ class Home extends CI_Controller
                                     <p class="p_avg_star">0</p>
                                     <p class="p_count_amount">(0)</p>
                                 </div>
+                            </div>
                             </div>
                         </a>
                     </div>';

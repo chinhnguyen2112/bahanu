@@ -1,14 +1,13 @@
 .body_content {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: flex-start;
     gap: 20px;
     padding-bottom: 10px;
 }
 
-.left_page,
-.right_page {
-    width: 320px;
+.left_page {
+    width: 207px;
     position: sticky;
     top: 0px;
     padding: 10px;
@@ -19,12 +18,31 @@
     background: #29292b;
 }
 
+.right_page {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
 .center_page {
-    width: calc(100% - 670px);
+    width: calc(100% - 230px);
+    max-width: 1350px;
+    margin: 0 auto;
     /* background: #ffffff; */
-    padding: 10px;
-    /* border: 1px solid #73b009; */
+    /* padding: 0 50px; */
     border-radius: 5px;
+    padding-right: 10px;
+}
+
+.box_detail_mobile {
+    display: none;
 }
 
 .list_kol {
@@ -34,7 +52,7 @@
 }
 
 .box_list_danhmuc {
-    width: calc((100% - 20px) / 3);
+    width: calc((100% - 40px) / 5);
     border-radius: 5px;
     cursor: pointer;
     border: 1px solid #393a3f;
@@ -43,6 +61,24 @@
 
 .box_detail_danhmuc img {
     width: 100%;
+}
+
+/* list  */
+#btn {
+    transition: margin-right .5s;
+    position: fixed;
+    z-index: 9;
+    top: 45%;
+    right: -22px;
+    transform: rotate(270deg);
+    margin: 0;
+    background: #f19790;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 15px 15px 0 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
 
 .this_user_list {
@@ -211,16 +247,52 @@ span.btn_buy {
     font-weight: 600;
 }
 
+.title_cate {
+    font-size: 16px;
+    color: #bcbcbc;
+    padding: 0 0 5px 0;
+}
+
 .list_cate {
     display: flex;
     gap: 5px;
 }
 
-.list_cate img {
+.list_cate_game {
+    color: #bcbcbc;
+    display: flex;
+    flex-direction: column;
+}
+
+.list_cate_game .list__game {
+    cursor: pointer;
+    display: flex;
+    padding: 8px 0;
+}
+
+.list_cate_game .list__game:hover {
+    background-color: #1f1f22;
+}
+
+.list_cate,
+.list_cate_game img {
+    margin-right: 10px;
     width: 25px;
     height: 25px;
     border-radius: 50%;
     background: #fff;
+}
+
+.list_cate_game img {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 10%;
+    background: #fff;
+}
+
+.list_cate_game .name_game {
+    padding-top: 6px;
 }
 
 .box_data_detail {
@@ -233,6 +305,7 @@ span.btn_buy {
 .list_star {
     display: flex;
     align-items: center;
+    display: none;
 }
 
 .p_count_amount {
@@ -285,6 +358,7 @@ span.btn_buy {
 }
 
 .no_data {
+    margin-top: 15px;
     color: #fff;
     text-align: center;
     font-size: 15px;
@@ -295,33 +369,347 @@ span.btn_buy {
 }
 
 @media (min-width: 1520px) {
-
-    .left_page,
-    .right_page {
-        width: 20%;
-    }
-
-    .center_page {
-        width: 60%;
-    }
-
     .box_list_danhmuc {
-        width: calc((100% - 60px) / 4);
+        width: calc((100% - 80px) / 5);
     }
 
     .list_kol {
         gap: 20px;
     }
+
+    .box_detail_mobile {
+        display: none;
+    }
 }
+
 
 @media (max-width: 1024px) {
     .body_content {
-        width: 1366px;
-        zoom: 0.6;
+        /* width: 1366px; */
+        /* zoom: 0.6; */
         margin: auto;
     }
 
     .content_page {
         overflow-y: auto;
     }
+
+    .box_detail_mobile {
+        display: none;
+    }
+
+    .box_list_danhmuc {
+        width: calc((100% - 30px) / 4);
+    }
+}
+
+@media (max-width: 768px) {
+    .box_list_cate {
+        overflow: auto;
+    }
+
+    .list_cate_game .list__game {
+        display: block;
+        padding: 0;
+    }
+
+    .no_data {
+        margin-top: 60px;
+        color: #fff;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .body_content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        zoom: unset;
+    }
+
+    .left_page {
+        width: 100%;
+        height: max-content;
+        padding: 10px 20px;
+    }
+
+    .left_page .list_cate_game {
+        display: flex;
+        height: 64px;
+        padding-left: 0;
+        width: max-content;
+        flex-direction: unset;
+    }
+
+    .list__game p {
+        display: none;
+    }
+
+    .list_cate_game img {
+        height: 60px;
+        width: 60px;
+        border-radius: 10%;
+    }
+
+    .left_page p {
+        font-weight: 700;
+        font-size: 18px;
+        color: #f0564a;
+        padding: 0;
+        padding-bottom: 10px;
+    }
+
+    /* content_box_detail_mobile  */
+    .center_page {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        padding: 0 20px;
+    }
+
+    .box_list_danhmuc {
+        border-radius: 8px;
+        display: flex;
+        width: 100%;
+        height: 105px;
+    }
+
+    .box_list_danhmuc a {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .box_detail_danhmuc {
+        width: 105px;
+        height: 100%;
+        position: relative;
+    }
+
+    .box_detail_danhmuc img {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+    }
+
+    .box_detail_danhmuc .num_count {
+        z-index: 1;
+        position: absolute;
+        bottom: 0px;
+        right: 0;
+        background-color: #f0564a;
+        color: #fff;
+        border-radius: 14px;
+        padding: 3px 7px 0px;
+        font-size: 12px;
+    }
+
+    /* content_box_detail_mobile  */
+    .box_list_danhmuc .name,
+    .intro,
+    .box_data_detail {
+        display: none;
+    }
+
+    .box_detail_mobile {
+        width: calc(100% - 115px);
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        padding: 5px 10px 0 0;
+    }
+
+    .box_detail_mobile .name_mobile {
+        color: #fff;
+        font-weight: 700;
+    }
+
+    .box_detail_mobile .intro_mobile {
+        color: #9298a1;
+        margin: 10px 0 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 12px;
+    }
+
+    .box_data_detail_mobile {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .list_cate_mobile img {
+        width: 23px;
+        height: 23px;
+        margin-right: 4px;
+        border-radius: 50%;
+        background: #fff;
+    }
+
+    .list_star_mobile {
+        display: flex;
+    }
+
+    .list_star_mobile img {
+        width: 15px;
+        height: 15px;
+        margin-top: 3px;
+    }
+
+    .list_star_mobile .p_avg_star {
+        line-height: inherit;
+        font-size: 16px;
+    }
+
+    .list_star_mobile .p_count_amount {
+        font-style: inherit;
+        font-weight: 100;
+        font-size: 14px;
+        color: #aaa;
+    }
+
+    .right_page #btn {
+        width: max-content;
+    }
+}
+
+@media (max-width: 375px) {
+
+    .body_content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        zoom: unset;
+    }
+
+    .left_page {
+        width: 100%;
+        height: max-content;
+
+    }
+
+    .list__game p {
+        display: none;
+    }
+
+    .left_page p {
+        font-weight: 700;
+        font-size: 18px;
+        color: #f0564a;
+        padding: 10px 0;
+    }
+
+    /* center page  */
+
+    .center_page {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+    }
+
+    .box_list_danhmuc {
+        border-radius: 8px;
+        display: flex;
+        width: 100%;
+        height: 105px;
+    }
+
+    .box_list_danhmuc a {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .box_detail_danhmuc {
+        width: 105px;
+        height: 100%;
+        position: relative;
+    }
+
+    .box_detail_danhmuc img {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+    }
+
+    .box_detail_danhmuc .num_count {
+        z-index: 1;
+        position: absolute;
+        bottom: 0px;
+        right: 0;
+        background-color: #f0564a;
+        color: #fff;
+        border-radius: 14px;
+        padding: 3px 7px 0px;
+        font-size: 12px;
+    }
+
+    /* content_box_detail_mobile  */
+    .box_list_danhmuc .name,
+    .intro,
+    .box_data_detail {
+        display: none;
+    }
+
+    .box_detail_mobile {
+        width: calc(100% - 115px);
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        padding: 5px 10px 0 0;
+    }
+
+    .box_detail_mobile .name_mobile {
+        color: #fff;
+        font-weight: 700;
+    }
+
+    .box_detail_mobile .intro_mobile {
+        color: #9298a1;
+        margin: 10px 0 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 12px;
+    }
+
+    .box_data_detail_mobile {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .list_cate_mobile img {
+        width: 23px;
+        height: 23px;
+        margin-right: 4px;
+        border-radius: 50%;
+        background: #fff;
+    }
+
+    .list_star_mobile {
+        display: flex;
+    }
+
+    .list_star_mobile img {
+        width: 15px;
+        height: 15px;
+        margin-top: 3px;
+    }
+
+    .list_star_mobile .p_avg_star {
+        line-height: inherit;
+        font-size: 16px;
+    }
+
+    .list_star_mobile .p_count_amount {
+        font-style: inherit;
+        font-weight: 100;
+        font-size: 14px;
+        color: #aaa;
+    }
+
+    .right_page #btn {
+        width: max-content;
+    }
+
 }

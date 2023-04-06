@@ -373,7 +373,7 @@ class Ajax extends CI_Controller
 
 
 
-        if (isset($_SESSION['user']) && $_SESSION['user']['id'] > 1) {
+        if (check_login()) {
 
 
             if (!$_POST['type']) {
@@ -467,8 +467,8 @@ class Ajax extends CI_Controller
 
                 $count = $this->Account->query_sql_num("SELECT * FROM history_card WHERE seri = '{$TxtSeri}' AND code = '{$TxtMaThe}' LIMIT 1");
                 if ($count == 0) {
-                    $partner_id = '3437753661'; //tes
-                    $partner_key = 'b4a4eef850f4cb9c85e9a3a3a54ec154';
+                    $partner_id = '32228962083'; //tes
+                    $partner_key = '82ad6dbbda6d6424240aa9af65c92f72';
                     $info_card = 0;
                     if ($info_card == 10000) {
                         $vnd = 10000;
@@ -569,8 +569,8 @@ class Ajax extends CI_Controller
     }
     public function callback()
     {
-        $partner_id = '3437753661'; //API key, lấy từ website thesieure.vn thay vào trong cặp dấu '
-        $partner_key = 'b4a4eef850f4cb9c85e9a3a3a54ec154'; //API secret lấy từ website thesieure.vn thay vào trong cặp dấu '
+        $partner_id = '32228962083'; //API key, lấy từ website thesieure.vn thay vào trong cặp dấu '
+        $partner_key = '82ad6dbbda6d6424240aa9af65c92f72'; //API secret lấy từ website thesieure.vn thay vào trong cặp dấu '
         if (isset($_POST)) {
 
             if ($this->input->post('callback_sign') != '') {
@@ -590,7 +590,7 @@ class Ajax extends CI_Controller
 
                         if ($this->input->post('status') == 1) {
 
-                            $zen =  $this->input->post('value') / 100;
+                            $zen =  $this->input->post('value');
                             $where_u = [
                                 'username' => $row['username']
                             ];

@@ -3,29 +3,27 @@
         <div class="header_logo">
             <a href="/"><img src="/images/logo.png" class="header_logo_pc " alt="Logo sanacc"></a>
         </div>
-        <div class="list_header">
+        <div class="box_header box_list_menu header_list_pc">
             <div class="list_menu">
                 <div class="box_menu">
-                    <img src="/images/header/home.png" alt="trang chủ">
-                    <span><a href="/">Trang chủ</a></span>
+                    <a href="/"><img src="/images/header/home.png" title="trang chủ"></a>
                 </div>
                 <div class="box_menu ">
-                    <img src="/images/header/Vector.png" alt="Cửa hàng">
-                    <span><a href="/danh-sach-idol/">Danh sách Playdoul</a></span>
+                    <a href="/danh-sach-idol/"><img src="/images/header/Vector.png" title="Cửa hàng"></a>
                 </div>
                 <div class="box_menu">
                     <img src="/images/header/category-2.png" alt="dịch vụ">
-                    <span>Dịch vụ</span>
-                    <img class="img_down box_btn_header_mb" src="/images/arrow-bottom.png" alt="xem thêm">
+                    <img class="img_down box_btn_header_mb" src="/images/arrow-bottom.png" title="xem thêm">
                     <div class="menu_con">
                         <p><span><a href="/the-game-garena/"><img class="img_icon_game " src="/images/home/garena.png" alt="game liên quân mobile"><span class="menu_span">Mua thẻ</span><img class="img_goto_link " src="/images/arrow-right.svg" alt="đi tới"></a></span></p>
                     </div>
                 </div>
                 <div class="box_menu">
-                    <img src="/images/header/card-pos.png" alt="nạp thẻ">
-                    <span><a href="/nap-the/">Nạp thẻ</a></span>
+                    <a href="/nap-the/"><img src="/images/header/card-pos.png" title="nạp thẻ"></a>
                 </div>
             </div>
+        </div>
+        <div class="list_header">
             <div class="list_nav_header">
                 <span class="text_box_header hide_mb"><a href="/message/"><img src="/images/chat.svg" alt="tin nhắn"> Tin nhắn</a></span>
                 <?php if (check_login()) { ?>
@@ -55,25 +53,16 @@
             </div>
         </div>
     </div>
+
     <div class="box_header box_list_menu header_list_tablet">
         <div class="box_logo_mb box_btn_header_mb">
             <img src="/images/logo.png" class="header_logo_pc header_logo_mb  " alt="Logo">
             <img src="/images/header/close.png" class="close_menu_mb header_logo_mb  " alt="Logo" onclick="$('.header_list_tablet').hide(100)">
         </div>
-
-        <div class="search_header search_header_mb box_btn_header_mb">
-            <input type="text" id="search_header" class="input_search_header" placeholder="Tìm kiếm sản phẩm...">
-            <img src="/images/header/search-normal.svg" alt="tìm kiếm">
-        </div>
         <div class="list_menu">
             <?php if (check_login()) { ?>
                 <div class="header_btn data_mb" onclick="click_menu_con(this,1)">
-                    <img class="img_avatar_user" src="<?php if (isset($_SESSION['user']['avatar']) && $_SESSION['user']['avatar'] !== "") {
-                                                            echo '/' . $_SESSION['user']['avatar'];
-                                                        } else {
-                                                            echo  'images/avt.png';
-                                                        } ?>">
-
+                    <img class="img_avatar_user" src="<?= $_SESSION['user']['avatar'] ?>">
                     <span class="list_data_u">
                         <p class="total_zen">Zen: <?= number_format($_SESSION['user']['zen']) ?></p>
                     </span>
@@ -87,7 +76,6 @@
             <?php } else { ?>
                 <div class="list_btn_header box_btn_header_mb header_btn">
                     <div class="box_btn_header ">
-                        <!-- <span class="text_login"><a>Đăng ký</a></span> -->
                         <span class="text_login"><a href="/dang-ky/">Đăng ký</a></span>
                     </div>
                     <div class="box_btn_header ">
@@ -113,11 +101,15 @@
                 <img class="img_down box_btn_header_mb" src="/images/arrow-bottom.png" alt="xem thêm">
             </div>
             <div class="menu_con">
-                <p><span><a href="/the-game-garena/">
+                <p>
+                    <span>
+                        <a href="/the-game-garena/">
                             <img class="img_icon_game " src="/images/home/garena.png" alt="game liên quân mobile">
                             <span class="menu_span">Mua thẻ Garena</span>
                             <img class="img_goto_link " src="/images/arrow-right.svg" alt="đi tới">
-                        </a></span></p>
+                        </a>
+                    </span>
+                </p>
             </div>
             <div class="box_menu">
                 <img src="/images/header/card-pos.png" alt="nạp thẻ">

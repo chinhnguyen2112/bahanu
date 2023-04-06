@@ -1,11 +1,11 @@
 .main_garena {
-    background: #1f2334;
+    background: #1f1f22;
 }
 
 .detail_acc {
     border: 3px solid #282c3d;
     display: flex;
-    background: #282c3d;
+    background: #1f1f22;
     width: 90%;
     margin: auto;
     /* align-items: flex-start; */
@@ -106,7 +106,7 @@
 .content_gr {
     padding: 20px;
     width: 50%;
-    background: #1f2334;
+    background: #1f1f22;
     /* display: flex; */
     align-items: center;
 }
@@ -261,6 +261,7 @@ p.data_mono {
     .detail_acc {
         /* flex-direction: column; */
     }
+
     .content_gr,
     .detail_acc_right {
         /* width: 100%; */
@@ -271,22 +272,28 @@ p.data_mono {
     .detail_acc {
         flex-direction: column;
     }
+
     .content_gr,
     .detail_acc_right {
         width: 100%;
     }
-    .box_count p{
+
+    .box_count p {
         text-align: center;
     }
+
     .box_inp_count {
         justify-content: center;
     }
+
     p.nd_ck {
         font-size: 14px;
     }
+
     p.data_mono {
         font-size: 13px;
     }
+
     .pd_25 {
         padding-left: 15px;
     }

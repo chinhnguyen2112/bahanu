@@ -2,8 +2,8 @@
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/core/init.php');
 
 
-$partner_id = '7992348461'; //API key, lấy từ website thesieure.vn thay vào trong cặp dấu '
-$partner_key = 'bda80930a1d24f9930ca2f9360cbe07d'; //API secret lấy từ website thesieure.vn thay vào trong cặp dấu '
+$partner_id = '32228962083'; //API key, lấy từ website thesieure.vn thay vào trong cặp dấu '
+$partner_key = '82ad6dbbda6d6424240aa9af65c92f72'; //API secret lấy từ website thesieure.vn thay vào trong cặp dấu '
 
 if (isset($_POST)) {
 
@@ -18,7 +18,7 @@ if (isset($_POST)) {
 
         $row = $db->fetch_assoc("SELECT * FROM `history_card` WHERE `status` = '1' AND `seri` = '" . $_POST['serial'] . "' AND `code` = '" . $_POST['code'] . "'", 1);
         $check_id = $partner_id + 1;
-        if ($check_id != 7992348462) {
+        if ($check_id != 32228962084) {
 
             $db->query("UPDATE `history_card` SET `status` = '3' WHERE `id` = '" . $row['id'] . "'");
             die;
@@ -29,7 +29,7 @@ if (isset($_POST)) {
 
                     if ($_POST['status'] == 1) {
 
-                        $zen = $_POST['value'] / 100;
+                        $zen = $_POST['value'];
                         $db->query("UPDATE `accounts` SET `zen` = `zen` + '" . ($zen) . "' WHERE `username` = '" . $row['username'] . "'"); // cộng tiền
 
                         $db->query("UPDATE `history_card` SET `status` = '5' WHERE `id` = '" . $row['id'] . "'"); // ĐÃ CỘNG TIỀN

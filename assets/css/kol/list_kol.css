@@ -1,6 +1,12 @@
 .content_list {
-    background: #1f2334;
+    background: #1f1f22;
     padding: 20px 177px;
+}
+
+.container_list {
+    max-width: 1530px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .img_bn_danhmuc img {
@@ -9,7 +15,7 @@
 
 .box_fillter {
     width: 269px;
-    background: #1F2334;
+    background: #29292b;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 0px 15px;
@@ -30,21 +36,21 @@
 .list_result {
     display: flex;
     gap: 30px 15px;
+    flex-wrap: wrap;
 }
 
 .box__list_danhmuc {
     border-radius: 5px;
     cursor: pointer;
-    filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.25));
-    width: calc((100% - 45px) / 4);
-    border: 1px solid;
+    width: calc((100% - 60px) / 5);
+    border: 1px solid #393a3f;
+    background: #272729;
 }
 
 .box_detail_danhmuc img {
     width: 100%;
     border-radius: 3px 3px 0px 0px;
     /* height: 241px; */
-    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
 }
 
 .box_detail_danhmuc {
@@ -382,6 +388,7 @@ select#xap_xep option {
 .list_star {
     display: flex;
     align-items: center;
+    display: none;
 }
 
 .p_count_amount {
@@ -415,18 +422,22 @@ select#xap_xep option {
 
 @media only screen and (max-width: 1280px) {
     .content_list {
-        padding: 20px 75px;
+        padding: 20px;
     }
 
     .list_result {
         grid-template-columns: auto auto;
+    }
+
+    .box__list_danhmuc {
+        width: calc((100% - 45px) / 4);
     }
 }
 
 
 @media only screen and (max-width: 1024px) {
     .box__list_danhmuc {
-        width: calc((100% - 15px) / 2);
+        width: calc((100% - 30px) / 3);
     }
 }
 
@@ -437,6 +448,7 @@ select#xap_xep option {
 
     .body_list {
         flex-direction: column;
+        margin-top: 0;
     }
 
     .box_list_content {
@@ -445,6 +457,8 @@ select#xap_xep option {
 
     .box_fillter {
         width: 100%;
+        padding: 0;
+        margin-bottom: 20px;
     }
 
     .box_fillter_mb {
@@ -464,7 +478,7 @@ select#xap_xep option {
 
 @media only screen and (max-width: 540px) {
     .content_list {
-        padding: 20px 25px;
+        padding: 20px 20px;
     }
 
     .list_result {
@@ -478,5 +492,31 @@ select#xap_xep option {
 
     .box__list_danhmuc {
         width: 100%;
+    }
+
+    .box__list_danhmuc a {
+        display: flex;
+    }
+
+    .box_detail_danhmuc {
+        width: 105px;
+        height: 100%;
+        position: relative;
+    }
+
+    .box_data_kol {
+        width: calc(100% - 105px);
+    }
+
+    .num_count {
+        font-size: 12px;
+        padding: 3px 5px;
+        border-radius: 5px;
+        right: 0;
+        bottom: 0;
+    }
+
+    .intro {
+        margin: 10px 0;
     }
 }
