@@ -90,6 +90,7 @@ class Admin extends CI_Controller
         $data['content'] = '/admin/member';
         $this->load->view('admin/index', $data);
     }
+
     public function edit_user()
     {
         $id = $this->input->get('id');
@@ -154,4 +155,57 @@ class Admin extends CI_Controller
         }
         echo json_encode($msg);
     }
+
+    public function list_game()
+    {
+        
+        $total_record = $this->Account->query_sql_num("SELECT * FROM category  ORDER BY id DESC  ");
+        $page = $this->uri->segment(3);
+        if ($page < 1 || $page == '') {
+            $page = 1;
+        }
+        $limit = 20;
+        $start = $limit * ($page - 1);
+        pagination('/admin/list_game', $total_record, $limit, 3);
+        $sql_get_list_buy = "SELECT * FROM `category` ORDER BY `id` DESC LIMIT $start, $limit";
+        $data['list'] = $this->Account->query_sql($sql_get_list_buy);
+        $data['content'] = '/admin/list_game';
+        $this->load->view('admin/index', $data);
+    }
+
+    public function edit_game()
+    {
+            $data['content'] = '/admin/edit_game';
+            $this->load->view('admin/index', $data);
+        
+    }
+
+    public function add_new_game() 
+    {
+        $name = $this->input->post('name');
+        $name_img = str_replace(' ', '_' , $name );
+        
+        $data['name'] = $name;
+
+        if (isset($_FILES['img_update']) && $_FILES['img_update']['name'] !== "") {
+            $filedata         = $_FILES['img_update']['tmp_name'];
+            $thumb_path        = 'upload/list_game/' . $name_img . '.jpg';
+            $imguser = $name_img . '.jpg';
+            $config['file_name'] = $imguser;
+            $config['upload_path'] = './upload/list_game';
+            $config['allowed_types'] = 'jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if (!$this->upload->do_upload('img_update')) {
+                $error = array('error' => $this->upload->display_errors()); 
+                var_dump($error);
+            } else {
+                $imageThumb = new Image($filedata);
+                $imageThumb->resize(100, 100);
+                $imageThumb->save($name_img, $config['upload_path'], 'jpg');
+                $data['image'] = $thumb_path;
+            }
+        }
+    }
+    
 }

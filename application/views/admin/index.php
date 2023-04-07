@@ -69,9 +69,16 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="/admin/his_card/" aria-expanded="false" aria-controls="ui-basics">
+                         <a class="nav-link" data-toggle="collapse" href="/admin/his_card/" aria-expanded="false" aria-controls="ui-basics">
                             <i class="typcn typcn-document-text menu-icon"></i>
                             <span class="menu-title">Giao dịch</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                         <a class="nav-link"  href="/admin/list_game">
+                            <i class="typcn typcn-document-text menu-icon"></i>
+                            <span class="menu-title">Danh sách game</span>
                         </a>
                     </li>
                 </ul>

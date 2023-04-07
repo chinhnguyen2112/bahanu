@@ -6,20 +6,41 @@
         <div class="box_header box_list_menu header_list_pc">
             <div class="list_menu">
                 <div class="box_menu">
-                    <a href="/"><img src="/images/header/home.png" title="trang chủ"></a>
+                    <a href="/">
+                        <img src="/images/header/home.png" title="trang chủ">
+                        <span class="text_tool">Trang chủ</span>
+                    </a>
                 </div>
                 <div class="box_menu ">
-                    <a href="/danh-sach-idol/"><img src="/images/header/Vector.png" title="Cửa hàng"></a>
+                    <a href="/danh-sach-idol/">
+                        <img src="/images/header/Vector.png" title="Cửa hàng">
+                        <span class="text_tool">Cửa hàng</span>
+                    </a>
                 </div>
                 <div class="box_menu">
-                    <img src="/images/header/category-2.png" alt="dịch vụ">
+                    <a href="/the-game-garena/">
+                        <img src="/images/header/category-2.png" alt="dịch vụ">
+                        <span class="text_tool">Dịch vụ</span>
+                    </a>
+
+                    <!-- <img src="/images/header/category-2.png" alt="dịch vụ">
                     <img class="img_down box_btn_header_mb" src="/images/arrow-bottom.png" title="xem thêm">
                     <div class="menu_con">
-                        <p><span><a href="/the-game-garena/"><img class="img_icon_game " src="/images/home/garena.png" alt="game liên quân mobile"><span class="menu_span">Mua thẻ</span><img class="img_goto_link " src="/images/arrow-right.svg" alt="đi tới"></a></span></p>
-                    </div>
+                        <p>
+                            <span>
+                                <a href="/the-game-garena/">
+                                    <img class="img_icon_game " src="/images/home/garena.png" alt="game liên quân mobile">
+                                    <span class="menu_span">Mua thẻ</span><img class="img_goto_link " src="/images/arrow-right.svg" alt="đi tới">
+                                </a>
+                            </span>
+                        </p>
+                    </div> -->
                 </div>
                 <div class="box_menu">
-                    <a href="/nap-the/"><img src="/images/header/card-pos.png" title="nạp thẻ"></a>
+                    <a href="/nap-the/">
+                        <img src="/images/header/card-pos.png" title="nạp thẻ">
+                        <span class="text_tool">Nạp thẻ</span>
+                    </a>
                 </div>
             </div>
         </div>

@@ -67,6 +67,7 @@ $route['lich-su-nap-the'] = 'Manager/ls_mua_hang';
 $route['admin'] = 'Admin/admin';
 $route['admin/his_card'] = 'Admin/his_card';
 $route['admin/member'] = 'Admin/member';
+$route['admin/list_game'] = 'Admin/list_game';
 
 
 //KOL
