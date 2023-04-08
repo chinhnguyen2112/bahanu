@@ -175,6 +175,12 @@ class Admin extends CI_Controller
 
     public function edit_game()
     {
+            $id = $this->input->get('id');
+            if ($id > 0) {
+                $sql_get_list_buy = "SELECT * FROM  category  WHERE id = $id";
+                $data['account'] = $this->Account->query_sql_row($sql_get_list_buy);
+                $data['id'] = $id;
+            } 
             $data['content'] = '/admin/edit_game';
             $this->load->view('admin/index', $data);
         
@@ -182,30 +188,62 @@ class Admin extends CI_Controller
 
     public function add_new_game() 
     {
+        $id = $this->input->post('id');
         $name = $this->input->post('name');
-        $name_img = str_replace(' ', '_' , $name );
         
+        
+        // $name_img = str_replace(' ', '_' , $name );
         $data['name'] = $name;
-
-        if (isset($_FILES['img_update']) && $_FILES['img_update']['name'] !== "") {
-            $filedata         = $_FILES['img_update']['tmp_name'];
-            $thumb_path        = 'upload/list_game/' . $name_img . '.jpg';
-            $imguser = $name_img . '.jpg';
-            $config['file_name'] = $imguser;
-            $config['upload_path'] = './upload/list_game';
-            $config['allowed_types'] = 'jpg|png';
-            $this->load->library('upload', $config);
-            $this->upload->initialize($config);
-            if (!$this->upload->do_upload('img_update')) {
-                $error = array('error' => $this->upload->display_errors()); 
-                var_dump($error);
-            } else {
-                $imageThumb = new Image($filedata);
-                $imageThumb->resize(100, 100);
-                $imageThumb->save($name_img, $config['upload_path'], 'jpg');
-                $data['image'] = $thumb_path;
+        $data['created_at'] = time();
+        
+        if ($id > 0) {
+            $where_id = ['id' => $id];
+            $update = $this->Account->update($where_id, $data, 'category');
+            $insert = 0;
+            if ( $update) {
+                $insert = $id;
             }
+        } else {
+            $insert = $this->Account->insert($data, 'category');
         }
+        if ($insert >0) {
+                
+                $msg = [
+                    'status' => 1,
+                    'msg' => 'Thành công'
+            ];
+        } else {
+            $msg = [
+                'status' => 0,
+                'msg' => 'Thất bại'
+            ];
+        }
+        echo json_encode($msg);
+        
+        // if (isset($_FILES['img_update']) && $_FILES['img_update']['name'] !== "") {
+        //     $filedata         = $_FILES['img_update']['tmp_name'];
+        //     $thumb_path        = 'upload/list_game/' . $name_img . '.jpg';
+        //     $imguser = $name_img . '.jpg';
+        //     $config['file_name'] = $imguser;
+        //     $config['upload_path'] = 'upload/list_game';
+        //     $config['allowed_types'] = 'jpg|png';
+        //     $this->load->library('upload', $config);
+        //     $this->upload->initialize($config);
+        //     if (!$this->upload->do_upload('img_update')) {
+        //         $error = array('error' => $this->upload->display_errors()); 
+        //         var_dump($error);
+        //     } else {
+        //         $imageThumb = new Image($filedata);
+        //         $imageThumb->resize(100, 100);
+        //         $imageThumb->save($name_img, $config['upload_path'], 'jpg');
+        //         $data['image'] = $thumb_path;
+        //     }
+           
+        // }
+        
     }
+
+
+   
     
 }
