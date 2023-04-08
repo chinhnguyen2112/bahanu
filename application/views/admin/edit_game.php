@@ -37,23 +37,24 @@
 
 <form id="form" class="form_change_pass">
    
+    <input type="hidden" name="id" hidden value="<?= isset($id) ? $id : ''  ?>" />
     <div class="form-group">
         <label>Tên</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="usrename">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="<?= isset($id) ? $account['name'] : '' ?>" >
     </div>
 
     <div class="form-group">
         <label>Ảnh</label>
         <!-- <input type="text" class="form-control" id="name" name="name" placeholder="usrename" value="<?= ($id > 0) ? $account['name'] : '' ?>"> -->
         <div class="form-control form-edit-img">
-            <img id="mainImage" class="avt_game" src="/images/avt.png" style="width:100px;height:100px">
+            <img id="mainImage" class="avt_game" src="/<?= isset($id) ? $account['image'] : 'images/avt.png' ?>" style="width:100px;height:100px">
             <input  type="file" id="img_update" name="img_update" onchange="document.getElementById('mainImage').src = window.URL.createObjectURL(this.files[0])">
         </div>
     </div>
     
     
     <div class="form-group">
-        <button type="submit" class="form-control btn btn-primary submit px-3"><?= (isset($id)) ? "Sửa" : "Thêm mới" ?></button>
+        <button type="submit"  class="form-control btn btn-primary submit px-3"><?= (isset($id)) ? "Sửa" : "Thêm mới" ?></button>
     </div>
 
 </form>
@@ -63,6 +64,17 @@
 <script>
     $("#form").validate({
         onclick: false,
+        rules: {
+            name: {
+                required: true,
+            }
+        },
+        messages: {
+            name: {
+                required: "Vui lòng nhập tên hiển thị",
+            }
+        },
+
         submitHandler: function(form) {
             var formData = new FormData($('#form')[0]);
             $.ajax({
@@ -80,7 +92,7 @@
                             type: "success",
                             text: response.msg
                         }, function() {
-                            window.location = '/admin/member';
+                            window.location = '/admin/list_game';
                         });
                     } else {
                         swal({

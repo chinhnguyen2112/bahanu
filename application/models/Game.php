@@ -63,4 +63,12 @@ class Game extends CI_Model
         $this->db->group_by('user_id');
         return $this->db->get('posts')->row_array();
     }
+
+    // public function add_game($name, $name_img) {
+    //     $data = array('name' => $name, 'image' => $name_img);
+
+    //     $result = $this->db->insert('category',$data);
+
+    //     return $result;
+    // }
 }
